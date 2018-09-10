@@ -9,6 +9,29 @@ function bubbleSort(array) {
   return array;
 }
 
+function quickSort (unsortedArray) {
+  const left = [];
+  const right = [];
+  
+  if (unsortedArray.length <= 1) {
+    return unsortedArray;
+  }
+  
+  const pivot = unsortedArray.pop();
+
+  unsortedArray.forEach( number => {
+    if (number < pivot) {
+      left.push(number);
+      
+    } else {
+      right.push(number)
+    }
+  })
+  
+  return [ ...quickSort(left), pivot, ...quickSort(right) ];
+}
+
 module.exports = {
-  bubbleSort
+  bubbleSort,
+  quickSort
 };
